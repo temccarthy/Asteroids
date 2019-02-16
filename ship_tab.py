@@ -11,7 +11,6 @@ class Ship:
     yVel=0
     xVelEnd=0 #x and y max velocity
     yVelEnd=0
-    bullDrawnBool=0
     
     #collision checking points
     topPoint=[0,0]
@@ -21,13 +20,13 @@ class Ship:
     midRightPoint=[0,0]
     midBottomPoint=[0,0]
     
-    spaceCount=0
-    updateAlready=0
+    spaceCount=False
+    updateAlready=False
         
-    shipCollisionBool=0
-    astRemoveBool=0
+    shipCollisionBool=False
+    astRemoveBool=False
     
-    invincibilityBool=1
+    invincibilityBool=True
     invincibilityFrames=0
     
     transparency=255
@@ -68,7 +67,7 @@ class Ship:
     
     ## makes the ship invincible for a period of time, the ship blinks during this time
     def invincibility(self):
-        if self.invincibilityBool==1:
+        if self.invincibilityBool==True:
             self.invincibilityFrames+=1
             
             if self.invincibilityFrames%(7*2)>=0 and self.invincibilityFrames%(7*2)<7:
@@ -78,7 +77,7 @@ class Ship:
             elif self.invincibilityFrames>140:
                 self.transparency=255
                 self.invincibilityFrames=0
-                self.invincibilityBool=0
+                self.invincibilityBool=False
             
     ## moves the ship
     def move(self): 
@@ -91,7 +90,7 @@ class Ship:
         
         #if up is pressed, ship accelerates in direction of dirAngle
         #if up not pressed, ship decelerates to 0
-        if __builtin__.upBool==1:
+        if __builtin__.upBool==True:
             self.xVelEnd=maxVel*cos(self.angle)
             self.yVelEnd=maxVel*sin(self.angle)
         else:
@@ -118,9 +117,9 @@ class Ship:
     ## turns the ship based on player input
     def turning(self):
         #checks if left or right is pressed, increases/decreases angle according to left or right
-        if __builtin__.leftBool==1:
+        if __builtin__.leftBool==True:
             self.angle -= radians(6)
-        if __builtin__.rightBool==1:
+        if __builtin__.rightBool==True:
             self.angle += radians(6)
             
         if self.angle>2*PI:
@@ -158,19 +157,19 @@ class Ship:
             elif anAst.radIncrement==1:
                 __builtin__.score+=100
             anAst.radIncrement-=1    
-            self.shipCollisionBool=1
+            self.shipCollisionBool=True
             astList.append(Asteroid(anAst.xPos,anAst.yPos,random(0,2*PI),anAst.radIncrement))
         else:
-            self.shipCollisionBool=0
-            self.astRemoveBool=0
+            self.shipCollisionBool=False
+            self.astRemoveBool=False
     
     ## shoots a bullet
     def shooting(self, bulletList):
-        if __builtin__.spaceBool==1:
-            if self.updateAlready==0:
-                self.spaceCount=1
-            if self.updateAlready==1:
-                self.spaceCount=0
-            self.updateAlready=1
-        if __builtin__.spaceBool==0:
-            self.updateAlready=0
+        if __builtin__.spaceBool==True:
+            if self.updateAlready==False:
+                self.spaceCount=True
+            if self.updateAlready==True:
+                self.spaceCount=False
+            self.updateAlready=True
+        if __builtin__.spaceBool==False:
+            self.updateAlready=False

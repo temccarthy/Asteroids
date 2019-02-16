@@ -3,4 +3,5 @@
 4220 Big
 0 Player
 2390 EEEEEE
-2070  Hi Tim's Prof
+2070 Hi
+1060 Tim

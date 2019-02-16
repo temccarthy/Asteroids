@@ -13,8 +13,8 @@ class Bullet:
     bulletHeight=2
     initX=0
     initY=0
-    bulletRemoveBool=0
-    astRemoveBool=0
+    bulletRemoveBool=False
+    astRemoveBool=False
     bulletFrames=0
     
     def __init__(self,xPos,yPos,angle,initX,initY):
@@ -63,8 +63,8 @@ class Bullet:
                 __builtin__.score+=100
             anAst.radIncrement-=1
             astList.append(Asteroid(anAst.xPos,anAst.yPos,random(0,2*PI),anAst.radIncrement))
-            self.bulletRemoveBool=1        
+            self.bulletRemoveBool=True
         else:
-            self.bulletRemoveBool=0
-            self.astRemoveBool=0
+            self.bulletRemoveBool=False
+            self.astRemoveBool=False
         
