@@ -179,7 +179,7 @@ def updateTypingString():
     global typingString, keyUpdated, letter
     #print(letter)
     if keyUpdated==False:
-        if letter=="" or letter=="\n":
+        if letter=="" or letter=="\n" or letter==";":
             pass
         elif letter=="\x08":
             typingString=typingString[:-1]
@@ -203,9 +203,9 @@ def readScoreFile():
         scoreFile=open("highScore.txt","r")
     
     for x in scoreFile:
-        a=x.split()
+        a=x.split(";")
         if len(a)!=0:
-            scoreList.append((int(a[0]),a[1]))
+            scoreList.append((int(a[0]),str(a[1])))
     scoreFile.close()
     
     l=[]
@@ -217,7 +217,7 @@ def readScoreFile():
 def writeToScoreFile():
     scoreFile=open("highScore.txt","w")
     for x in scoreList:
-        scoreFile.write(str(x[0])+" "+str(x[1])+"\n")
+        scoreFile.write(str(x[0])+";"+str(x[1]))#+"\n")
     scoreFile.close()
     
 ## displays the game over and name entry screens
