@@ -149,7 +149,12 @@ class Ship:
         
     ## checks for ship collision with an asteroid from astList
     def shipCollision(self,astList, anAst):
-        if dist(self.topPoint[0],self.topPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or dist(self.leftPoint[0],self.leftPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or dist(self.rightPoint[0],self.rightPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or dist(self.midLeftPoint[0],self.midLeftPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or dist(self.midRightPoint[0],self.midRightPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or dist(self.midBottomPoint[0],self.midBottomPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2:
+        if dist(self.topPoint[0],self.topPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or \
+            dist(self.leftPoint[0],self.leftPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or \
+            dist(self.rightPoint[0],self.rightPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or \
+            dist(self.midLeftPoint[0],self.midLeftPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or \
+            dist(self.midRightPoint[0],self.midRightPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2 or \
+            dist(self.midBottomPoint[0],self.midBottomPoint[1],anAst.xPos,anAst.yPos) < anAst.diameter/2:
             if anAst.radIncrement==3:
                 __builtin__.score+=20
             elif anAst.radIncrement==2:

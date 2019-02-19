@@ -6,7 +6,7 @@ class Asteroid:
     radIncrement=0
     diameter=0
     angle=0
-    vel=3
+    vel=2
     xPos=0 
     yPos=0 
     xVel=0

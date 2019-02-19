@@ -56,7 +56,7 @@ def generateAsteroids(n):
 
 ## increases the level of the game
 def levelUp():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames
+    global numbAst, levelFrames
     if len(astList)==0:
         levelFrames+=1
         if levelFrames==60:
@@ -66,7 +66,7 @@ def levelUp():
 
 ## respawns the ship when it collides with an asteroid
 def respawnShip():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames
+    global numbAst, shipFrames
     if len(shipList)==0:
         shipFrames+=1
         if shipFrames==60:
@@ -87,7 +87,7 @@ def drawAllBullets():
 
 ## makes the ship invincible for a set amount of time to prevent collisions with asteroids
 def asteroidShipInvincibility():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames
+    global shipLives
     if shipList[0].invincibilityBool==False:
         for x in astList:
             shipList[0].shipCollision(astList,x)
@@ -98,7 +98,6 @@ def asteroidShipInvincibility():
 
 ## checks for collision between bullets and asteroids
 def asteroidBulletCollision():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames
     for x in astList:
         for j in bulletList:
             j.bulletCollision(astList,x)
@@ -112,18 +111,18 @@ def asteroidBulletCollision():
 
 ## displays the game over screen
 def gameOver():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames
     textAlign(CENTER)
     textSize(40)
     fill(255)
-    text("You NR'ed",__builtin__.width/2,__builtin__.height/2)
+    text("GAME OVER",__builtin__.width/2,__builtin__.height/2)
     text(__builtin__.score,__builtin__.width/2,__builtin__.height/2+40)
     
 ## displays the play again button
 def playAgain():
-    global gameoverFrames, shipLives, numbAst, typingString,enterBool
+    global enterBool, mouseBool
     
-    if (mouseX > __builtin__.width/2-100 and mouseX<__builtin__.width/2+100) and (mouseY< __builtin__.height/2+190+7 and mouseY>__builtin__.height/2+190-25):
+    if (mouseX > __builtin__.width/2-100 and mouseX<__builtin__.width/2+100) and \
+        (mouseY< __builtin__.height/2+190+7 and mouseY>__builtin__.height/2+190-25):
         textAlign(CENTER)
         textSize(36)
         fill(255)
@@ -153,7 +152,7 @@ def resetGame():
     
 ## displays the score of the player, high score of the game, and lives of the ship
 def scoreAndLives():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames
+    global shipLives
     textAlign(LEFT)
     textSize(20)
     fill(255)
@@ -177,7 +176,7 @@ def scoreAndLives():
 
 ## updates the players name as they enter it
 def updateTypingString():
-    global typingString,keyUpdated,letter
+    global typingString, keyUpdated, letter
     #print(letter)
     if keyUpdated==False:
         if letter=="" or letter=="\n":
@@ -234,7 +233,8 @@ def gameOverScreen1():
         fill(255)
         text("Enter Name: "+typingString,__builtin__.width/2,__builtin__.height/2)
         
-        if (mouseX > __builtin__.width/2-20 and mouseX<__builtin__.width/2+20) and (mouseY< __builtin__.height/2+30+7 and mouseY>__builtin__.height/2+30-22):
+        if (mouseX > __builtin__.width/2-20 and mouseX<__builtin__.width/2+20) and \
+            (mouseY< __builtin__.height/2+30+7 and mouseY>__builtin__.height/2+30-22):
             textSize(22)
             text("OK",__builtin__.width/2,__builtin__.height/2+31)
             if mouseBool==True:
@@ -315,7 +315,7 @@ def keyPressed():
 
 ## checks if any key on the keyboard is released
 def keyReleased():
-    global letter,enterBool
+    global letter, enterBool
     if letter==str(key):
         letter=""
     if key == " ":
@@ -344,7 +344,7 @@ def setup():
     readScoreFile()
     
 def draw():
-    global numbAst, level, shipLives, shipFrames, levelFrames, gameoverFrames, typingString, gameOverScreenCounter, highScore, enterBool
+    global shipLives, typingString, gameOverScreenCounter
     
     #resets screen
     fill(0)
