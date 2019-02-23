@@ -8,8 +8,6 @@
 
 import __builtin__
 
-__builtin__.width=900
-__builtin__.height=600
 __builtin__.upBool=False
 __builtin__.leftBool=False
 __builtin__.rightBool=False
@@ -46,12 +44,12 @@ keyUpdated=False
 ## generates the given number of asteroids
 def generateAsteroids(n):
     for i in range(n):
-        astX=random(0,__builtin__.width)
-        astY=random(0,__builtin__.height)
+        astX=random(0,width)
+        astY=random(0,height)
         if astX>shipList[0].xPos-50 and astX<shipList[0].xPos+50:
-            astX=random(0,__builtin__.width)
+            astX=random(0,width)
         if astY>shipList[0].yPos-50 and astY<shipList[0].yPos+50:
-            astY=random(0,__builtin__.height)
+            astY=random(0,height)
         astList.append(Asteroid(astX,astY,random(0,2*PI),3))
 
 ## increases the level of the game
@@ -70,7 +68,7 @@ def respawnShip():
     if len(shipList)==0:
         shipFrames+=1
         if shipFrames==60:
-            shipList.append(Ship(__builtin__.width/2,__builtin__.height/2,-PI/2))
+            shipList.append(Ship(width/2,height/2,-PI/2))
             shipFrames=0
 
 ## draws the bullets when the ship "shoots"
@@ -114,19 +112,19 @@ def gameOver():
     textAlign(CENTER)
     textSize(40)
     fill(255)
-    text("GAME OVER",__builtin__.width/2,__builtin__.height/2)
-    text(__builtin__.score,__builtin__.width/2,__builtin__.height/2+40)
+    text("GAME OVER",width/2,height/2)
+    text(__builtin__.score,width/2,height/2+40)
     
 ## displays the play again button
 def playAgain():
     global enterBool, mouseBool
     
-    if (mouseX > __builtin__.width/2-100 and mouseX<__builtin__.width/2+100) and \
-        (mouseY< __builtin__.height/2+190+7 and mouseY>__builtin__.height/2+190-25):
+    if (mouseX > width/2-100 and mouseX<width/2+100) and \
+        (mouseY< height/2+190+7 and mouseY>height/2+190-25):
         textAlign(CENTER)
         textSize(36)
         fill(255)
-        text("Play Again",__builtin__.width/2,__builtin__.height/2+192)
+        text("Play Again",width/2,height/2+192)
         if mouseBool==True:
             resetGame()
     elif enterBool==True:
@@ -135,7 +133,7 @@ def playAgain():
         textAlign(CENTER)
         textSize(32)
         fill(255)
-        text("Play Again",__builtin__.width/2,__builtin__.height/2+190)
+        text("Play Again",width/2,height/2+190)
 
 ## resets the game after the play again button is clicked
 def resetGame():    
@@ -148,7 +146,7 @@ def resetGame():
         gameOverScreenCounter=0
         for i in range(len(astList)):
             astList.remove(astList[0])
-        shipList.append(Ship(__builtin__.width/2,__builtin__.height/2,-PI/2))
+        shipList.append(Ship(width/2,height/2,-PI/2))
     
 ## displays the score of the player, high score of the game, and lives of the ship
 def scoreAndLives():
@@ -217,7 +215,7 @@ def readScoreFile():
 def writeToScoreFile():
     scoreFile=open("highScore.txt","w")
     for x in scoreList:
-        scoreFile.write(str(x[0])+";"+str(x[1]))#+"\n")
+        scoreFile.write(str(x[0])+";"+str(x[1])+"\n")
     scoreFile.close()
     
 ## displays the game over and name entry screens
@@ -231,12 +229,12 @@ def gameOverScreen1():
         textAlign(CENTER)
         textSize(30)
         fill(255)
-        text("Enter Name: "+typingString,__builtin__.width/2,__builtin__.height/2)
+        text("Enter Name: "+typingString,width/2,height/2)
         
-        if (mouseX > __builtin__.width/2-20 and mouseX<__builtin__.width/2+20) and \
-            (mouseY< __builtin__.height/2+30+7 and mouseY>__builtin__.height/2+30-22):
+        if (mouseX > width/2-20 and mouseX<width/2+20) and \
+            (mouseY< height/2+30+7 and mouseY>height/2+30-22):
             textSize(22)
-            text("OK",__builtin__.width/2,__builtin__.height/2+31)
+            text("OK",width/2,height/2+31)
             if mouseBool==True:
                 gameOverScreenCounter+=1
                 gameoverFrames=0
@@ -245,7 +243,7 @@ def gameOverScreen1():
             gameoverFrames=0
         else:
             textSize(20)
-            text("OK",__builtin__.width/2,__builtin__.height/2+30)
+            text("OK",width/2,height/2+30)
         
 ## displays the high score screen and prompts the player to play again
 def gameOverScreen2():
@@ -255,7 +253,7 @@ def gameOverScreen2():
     fill(255)
     textAlign(CENTER)
     textSize(30)
-    text("High Scores",__builtin__.width/2,__builtin__.height/2-170)
+    text("High Scores",width/2,height/2-170)
     
     scoresHeight=0
     
@@ -269,13 +267,13 @@ def gameOverScreen2():
     
     for x in scoreList:
         textAlign(RIGHT)
-        text(x[0],__builtin__.width/2-20,__builtin__.height/2-130+scoresHeight)
+        text(x[0],width/2-20,height/2-130+scoresHeight)
         scoresHeight+=30
 
     scoresHeight=0
     for x in scoreList:
         textAlign(LEFT)
-        text(x[1],__builtin__.width/2+20,__builtin__.height/2-130+scoresHeight)
+        text(x[1],width/2+20,height/2-130+scoresHeight)
         scoresHeight+=30
     
     if gameoverFrames>=120:
@@ -334,10 +332,10 @@ def keyReleased():
 
 def setup():
     background(0)
-    size(__builtin__.width,__builtin__.height)
+    size(900,600)
     #frameRate(5)
     
-    shipList.append(Ship(__builtin__.width/2,__builtin__.height/2,-PI/2))
+    shipList.append(Ship(width/2,height/2,-PI/2))
 
     generateAsteroids(numbAst)
 
@@ -348,7 +346,7 @@ def draw():
     
     #resets screen
     fill(0)
-    rect(0,0,__builtin__.width,__builtin__.height)
+    rect(0,0,width,height)
     
     levelUp()
     

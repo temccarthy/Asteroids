@@ -130,12 +130,12 @@ class Ship:
     ## teleports the ship when off screen
     def teleport(self):
         if self.xPos<=-10:
-            self.xPos=__builtin__.width-1
-        if self.xPos>=__builtin__.width+10:
+            self.xPos=width-1
+        if self.xPos>=width+10:
             self.xPos=-9
         if self.yPos<=-10:
-            self.yPos=__builtin__.height-1
-        if self.yPos>=__builtin__.height+10:
+            self.yPos=height-1
+        if self.yPos>=height+10:
             self.yPos=-9     
     
     ## sets collision points for ship collision with asteroid

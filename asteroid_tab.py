@@ -40,10 +40,10 @@ class Asteroid:
     ## teleports asteroid when off screen
     def teleport(self):
         if self.xPos<=-self.diameter/2:
-            self.xPos=__builtin__.width+self.diameter/2-1
-        if self.xPos>=__builtin__.width+self.diameter/2:
+            self.xPos=width+self.diameter/2-1
+        if self.xPos>=width+self.diameter/2:
             self.xPos=-self.diameter/2+1
         if self.yPos<=-self.diameter/2:
-            self.yPos=__builtin__.height+self.diameter/2-1
-        if self.yPos>=__builtin__.height+self.diameter/2:
+            self.yPos=height+self.diameter/2-1
+        if self.yPos>=height+self.diameter/2:
             self.yPos=-self.diameter/2+1

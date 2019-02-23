@@ -44,12 +44,12 @@ class Bullet:
     ## teleports the bullet when off screen
     def teleport(self):
         if self.xPos<=-0:
-            self.xPos=__builtin__.width+0-1
-        if self.xPos>=__builtin__.width+0:
+            self.xPos=width+0-1
+        if self.xPos>=width+0:
             self.xPos=-0+1
         if self.yPos<=-0:
-            self.yPos=__builtin__.height+0-1
-        if self.yPos>=__builtin__.height+0:
+            self.yPos=height+0-1
+        if self.yPos>=height+0:
             self.yPos=-0+1
             
     ## checks collision with an asteroid from astList
