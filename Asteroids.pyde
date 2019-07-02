@@ -215,7 +215,7 @@ def readScoreFile():
 def writeToScoreFile():
     scoreFile=open("highScore.txt","w")
     for x in scoreList:
-        scoreFile.write(str(x[0])+";"+str(x[1])+"\n")
+        scoreFile.write(str(x[0])+";"+str(x[1]))
     scoreFile.close()
     
 ## displays the game over and name entry screens
