@@ -11,21 +11,37 @@ class Asteroid:
     yPos=0 
     xVel=0
     yVel=0
+    rotateAng=0
 
     def __init__(self,xPos,yPos,angle,radIncrement):
         self.xPos=xPos
         self.yPos=yPos
         self.angle=angle
         self.radIncrement=radIncrement
+        self.rotateAng=random(0,2*PI)
     
     ## draws an asteroid shape
     def drawAst(self):
+        
         self.move()
+        
+        #ellipse(self.xPos,self.yPos,self.diameter,self.diameter)
+        pushMatrix()
+        
+        translate(self.xPos,self.yPos)
+        rotate(self.rotateAng)
+        
         stroke("#FF0000")
         noFill()
-        ellipse(self.xPos,self.yPos,self.diameter,self.diameter)
+        
+        ellipse(0,0,self.diameter,self.diameter)
+        rect(-50/2,-50/2,50,50)
+        self.rotateAng+=.01
         noStroke()
-    
+        
+        popMatrix()
+        
+        
     ## moves the asteroid
     def move(self):
         self.teleport()
