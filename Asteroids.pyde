@@ -25,7 +25,7 @@ bulletList = []
 shipList = []
 
 shipLives=3
-numbAst=3
+numbAst=5
 
 shipFrames=0
 levelFrames=0
@@ -38,8 +38,6 @@ gameOverScreenCounter=0
 typingString=""
 letter=""
 keyUpdated=False
-
-
 
 
 ############################################

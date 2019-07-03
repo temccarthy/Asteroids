@@ -21,7 +21,7 @@ class Asteroid:
         self.yPos=yPos
         self.angle=angle
         self.radIncrement=radIncrement
-        self.rotateAng=random(0,2*PI)
+        self.rotateAng=0#random(0,2*PI)
         
         self.astpic = loadImage("asteroids.png")
         imageMode(CENTER)
@@ -43,14 +43,14 @@ class Asteroid:
         stroke("#FF0000")
         noFill()
         
-        ellipse(0,0,self.diameter,self.diameter)
+        #ellipse(0,0,self.diameter,self.diameter)
         #rect(-50/2,-50/2,50,50)
         
         #image(self.astpic,0,0,50,50)
-        copy(self.astpic,500/4*self.picX,500/4*self.picY,500/4,500/4,-self.diameter/2,-self.diameter/2,self.diameter,self.diameter)
-
+        copy(self.astpic,500/4*self.picX,500/4*self.picY,500/4,500/4,int(-self.diameter*1.1/2),int(-self.diameter*1.1/2),int(self.diameter*1.1),int(self.diameter*1.1))
+        #ellipse(0,0,5,5)
         
-        self.rotateAng+=.01
+        #self.rotateAng+=.01
         noStroke()
         
         popMatrix()
