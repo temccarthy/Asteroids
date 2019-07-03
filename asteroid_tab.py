@@ -12,6 +12,9 @@ class Asteroid:
     xVel=0
     yVel=0
     rotateAng=0
+    astpic = None
+    picX=0
+    picY=0
 
     def __init__(self,xPos,yPos,angle,radIncrement):
         self.xPos=xPos
@@ -19,6 +22,12 @@ class Asteroid:
         self.angle=angle
         self.radIncrement=radIncrement
         self.rotateAng=random(0,2*PI)
+        
+        self.astpic = loadImage("asteroids.png")
+        imageMode(CENTER)
+        
+        self.resetAstNum()
+        #self.astpic = copy(self.astpic,500/4*picX,500/4*picY,500/4,500/4,0,0,self.diameter,self.diameter)
     
     ## draws an asteroid shape
     def drawAst(self):
@@ -35,7 +44,12 @@ class Asteroid:
         noFill()
         
         ellipse(0,0,self.diameter,self.diameter)
-        rect(-50/2,-50/2,50,50)
+        #rect(-50/2,-50/2,50,50)
+        
+        #image(self.astpic,0,0,50,50)
+        copy(self.astpic,500/4*self.picX,500/4*self.picY,500/4,500/4,-self.diameter/2,-self.diameter/2,self.diameter,self.diameter)
+
+        
         self.rotateAng+=.01
         noStroke()
         
@@ -63,3 +77,8 @@ class Asteroid:
             self.yPos=height+self.diameter/2-1
         if self.yPos>=height+self.diameter/2:
             self.yPos=-self.diameter/2+1
+            
+    def resetAstNum(self):
+        picNum = int(random(0,16))
+        self.picX = picNum%4
+        self.picY = picNum//4

@@ -62,6 +62,7 @@ class Bullet:
             elif anAst.radIncrement==1:
                 __builtin__.score+=100
             anAst.radIncrement-=1
+            anAst.resetAstNum()
             astList.append(Asteroid(anAst.xPos,anAst.yPos,random(0,2*PI),anAst.radIncrement))
             self.bulletRemoveBool=True
         else:

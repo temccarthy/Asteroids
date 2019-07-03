@@ -21,8 +21,8 @@ from asteroid_tab import Asteroid
 from bullet_tab import Bullet
 
 astList = []
-bulletList=[]
-shipList=[]
+bulletList = []
+shipList = []
 
 shipLives=3
 numbAst=3
@@ -38,6 +38,9 @@ gameOverScreenCounter=0
 typingString=""
 letter=""
 keyUpdated=False
+
+
+
 
 ############################################
 
@@ -340,6 +343,8 @@ def setup():
     generateAsteroids(numbAst)
 
     readScoreFile()
+    
+    
     
 def draw():
     global shipLives, typingString, gameOverScreenCounter
